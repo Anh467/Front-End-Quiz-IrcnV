@@ -1,0 +1,18 @@
+.test {
+  font-size: 1rem;
+  width: 50%;
+  background-color: red; }
+
+h1 {
+  color: red; }
+
+h2 {
+  color: green; }
+
+.font-awesome {
+  width: 50%; }
+
+.nav-item i {
+  align-items: right;
+  color: white;
+  padding-left: 2%; }
