@@ -13,13 +13,58 @@
     <link rel="stylesheet" href="../css/app.css">
 </head>
 <body>
-    <div>
-        <div class="container-img" style="width: 200px; height: 200px;">
-            <a href="#">
-                <img  class="object-fit-cover w-100 h-100" src="../img/11e3bxo822_Sea_Turtle_Hol_Chan_Marine_Reserve_WW1105958.jpg">
+
+    <h2>Float Right</h2>
+
+    <p style="shape-outside: circle(50%);">In this example, the image will float to the right in the paragraph, and the text in the paragraph will wrap around the image.</p>
+    
+    <p><img class="rounded-circle" src="../img/11e3bxo822_Sea_Turtle_Hol_Chan_Marine_Reserve_WW1105958.jpg" 
+        alt="Pineapple" style="width:170px;
+                            height:170px;
+                            margin: 0 25px 0 25px;
+                            float: left;
+                            shape-outside: circle(50%);
+                            clip-path: circle(50%);">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.</p>
+
+
+
+
+    <a href="#" class=" w-100">
+        <div  style="width: 400px; 
+                    height:  400px; 
+                    border-radius: 50%; 
+                    border: 2px black solid;
+                    shape-outside: 
+                    circle(50%);
+                    clip-path: circle(50%);">
+            <img  class="float-right object-fit-cover w-100 h-100 rounded-circle" src="../img/11e3bxo822_Sea_Turtle_Hol_Chan_Marine_Reserve_WW1105958.jpg">
+        </div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit
+    </a>
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            One of three columns
+          </div>
+          <div class="col-sm">
+            One of three columns
+          </div>
+          <div class="col-sm">
+            One of three columns
+          </div>
+        </div>
+      </div>
+    <div class="container row">
+        <div class="col-md-12 container-img d-inline">
+            <a href="#" class=" w-100">
+                <div  style="width: 400px; height:  400px;">
+                    <img  class="float-left object-fit-cover w-100 h-100 rounded-circle" src="../img/11e3bxo822_Sea_Turtle_Hol_Chan_Marine_Reserve_WW1105958.jpg">
+                </div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit
             </a>
         </div>
-        <div class="container-content">
+        <div class="col-md-3 container-content d-inline">
             <table>
                 <th>
                     Name:
@@ -27,6 +72,14 @@
                 <td>
                     Nguyễn Anh Việt
                 </td>
+                
+                <th>
+                    Name:
+                </th>
+                <td>
+                    Nguyễn Anh Việt
+                </td>
+
             </table>
         </div>
     </div>
