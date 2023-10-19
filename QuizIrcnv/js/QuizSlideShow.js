@@ -273,7 +273,8 @@ var questionLoadMore =  [
       ]
   }
 ];
-
+var GB_Total = 0
+var GB_current = 0
 function getCarouselIndicatorsButton(i){
   if(i == 0)
     return `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${i}" class="active" aria-current="true" aria-label="Slide ${i+1}"></button>`;
@@ -331,7 +332,37 @@ addEventListener("load", (event) => {
   loadQuestion(questionTotal)
   setCurrent()
 });
-
+function reachTo(){
+    try {
+        // giá trị mà slide mới đến 
+        var value = document.getElementById('number').value
+        // lấy giá trị mà có bao nhiêu
+        var total = GB_Total
+         // lấy giá trị hiện tại
+         var current = GB_current
+        // kiểm tra có phải là số không 
+        if(!value)
+            throw new Error("Please Enter a number")
+        // kiểm tra số có nằm trong khoảng phù hợp 
+        if(value > total)
+            throw new Error("Please select value under total")
+        // kiểm tra số nhập vào có phải là số dương không 
+        if(value <= 0)
+            throw new Error("Please Enter positive number")
+        // lấy danh sách của item 
+        var currentActiveSlide = document.querySelector("#carouselExampleIndicators .carousel-item.active");
+        // Kiểm tra nếu có phần tử hiện tại có class "active"
+        if (currentActiveSlide) {
+            // Loại bỏ class "active" khỏi phần tử hiện tại
+            currentActiveSlide.classList.remove("active");
+        }
+        document.querySelector(`#carouselExampleIndicators .carousel-item:nth-child(${value})`).classList.add("active");
+        setCurrent()
+    } catch (error) {
+        alert(error.message)
+    }
+    
+}
 function loadmore(){
   loadQuestion(questionLoadMore)
 }
@@ -340,6 +371,8 @@ function setTotal(){
   var carousel_indicatorButton = carousel_indicator.querySelectorAll("button");
   var total = document.getElementById('total')
   total.innerHTML = "Total: "+ carousel_indicatorButton.length
+  GB_Total = carousel_indicatorButton.length
+  //alert(GB_Total)
 }
 function setCurrent(){
     // Lấy phần tử carousel
@@ -348,16 +381,18 @@ function setCurrent(){
     var activeSlideIndex = myCarousel.find('.carousel-item.active').index();
     var current = document.getElementById('current')
     current.innerHTML = 'Current: ' + (activeSlideIndex + 1) 
+    GB_current = activeSlideIndex + 1
+    //alert(GB_current)
 }
 $(document).ready(function() {
     // Lắng nghe sự kiện 'slide.bs.carousel'
     $('#carouselExampleIndicators').on('slide.bs.carousel', function (e) {
-      var slideFrom = $(this).find('.active').index();
-      var slideTo = $(e.relatedTarget).index();
-      var current = document.getElementById('current')
-      current.innerHTML = 'Current: ' + (slideFrom + 1) 
-      console.log('Slide từ: ' + slideFrom + ' đến: ' + slideTo);
-      
-      // Thực hiện hành động cần thiết ở đây
+        var slideFrom = $(this).find('.active').index();
+        var slideTo = $(e.relatedTarget).index();
+        var current = document.getElementById('current')
+        current.innerHTML = 'Current: ' + (slideFrom + 1) 
+        console.log('Slide từ: ' + slideFrom + ' đến: ' + slideTo);
+        GB_current = slideFrom + 1
+        // Thực hiện hành động cần thiết ở đây
     });
-  });
+});
