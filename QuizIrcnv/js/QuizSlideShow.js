@@ -166,7 +166,113 @@ var questionTotal = [
       ]
   }
 ];
-
+var questionLoadMore =  [
+  {
+      question: "Trái Đất là hành tinh thứ mấy trong Hệ Mặt Trời?",
+      answer: [
+          {
+              value: "Hành tinh thứ 1",
+              isCorrect: true
+          },
+          {
+              value: "Hành tinh thứ 2",
+              isCorrect: false
+          },
+          {
+              value: "Hành tinh thứ 3",
+              isCorrect: true
+          },
+          {
+              value: "Hành tinh thứ 4",
+              isCorrect: false
+          }
+      ]
+  },
+  {
+      question: "Ai là người phát minh ra đèn đom?",
+      answer: [
+          {
+              value: "Thomas Edison",
+              isCorrect: true
+          },
+          {
+              value: "Albert Einstein",
+              isCorrect: false
+          },
+          {
+              value: "Isaac Newton",
+              isCorrect: false
+          },
+          {
+              value: "Galileo Galilei",
+              isCorrect: false
+          }
+      ]
+  },
+  {
+      question: "Ai là tác giả của bức tranh Mona Lisa nổi tiếng?",
+      answer: [
+          {
+              value: "Leonardo da Vinci",
+              isCorrect: true
+          },
+          {
+              value: "Vincent van Gogh",
+              isCorrect: false
+          },
+          {
+              value: "Pablo Picasso",
+              isCorrect: false
+          },
+          {
+              value: "Claude Monet",
+              isCorrect: false
+          }
+      ]
+  },
+  {
+      question: "Câu nói 'I have a dream' nổi tiếng được phát biểu bởi ai?",
+      answer: [
+          {
+              value: "Martin Luther King Jr.",
+              isCorrect: true
+          },
+          {
+              value: "Abraham Lincoln",
+              isCorrect: false
+          },
+          {
+              value: "John F. Kennedy",
+              isCorrect: false
+          },
+          {
+              value: "Winston Churchill",
+              isCorrect: false
+          }
+      ]
+  },
+  {
+      question: "Ngôn ngữ lập trình JavaScript được tạo bởi ai?",
+      answer: [
+          {
+              value: "Brendan Eich",
+              isCorrect: true
+          },
+          {
+              value: "Linus Torvalds",
+              isCorrect: false
+          },
+          {
+              value: "Mark Zuckerberg",
+              isCorrect: false
+          },
+          {
+              value: "Tim Berners-Lee",
+              isCorrect: false
+          }
+      ]
+  }
+];
 
 function getCarouselIndicatorsButton(i){
   if(i == 0)
@@ -208,16 +314,50 @@ function getCarouselItemDiv(input, i){
 }
 
 function loadQuestion(question) {
-  var carousel_indicators = document.querySelector(".carousel-indicators");
+  var carousel_indicator = document.querySelector(".carousel-indicators");
+  var carousel_indicatorButton = carousel_indicator.querySelectorAll("button");
   var carousel_inner = document.querySelector(".carousel-inner");
-  carousel_indicators.innerHTML = "";
-  carousel_inner.innerHTML = "";
+  var init = carousel_indicatorButton.length
+  // carousel_indicators.innerHTML = "";
+  // carousel_inner.innerHTML = "";
 
-  for (let i = 0; i < question.length; i++) {
-    carousel_indicators.innerHTML += getCarouselIndicatorsButton(i);
-    carousel_inner.innerHTML += getCarouselItemDiv(question[i], i);
+  for (let i = 0 + init; i < question.length + init; i++) {
+    carousel_indicator.innerHTML = carousel_indicator.innerHTML + getCarouselIndicatorsButton(i);
+    carousel_inner.innerHTML = carousel_inner.innerHTML + getCarouselItemDiv(question[i-init], i);
   }
+  setTotal()
 }
 addEventListener("load", (event) => {
   loadQuestion(questionTotal)
+  setCurrent()
 });
+
+function loadmore(){
+  loadQuestion(questionLoadMore)
+}
+function setTotal(){
+  var carousel_indicator = document.querySelector(".carousel-indicators");
+  var carousel_indicatorButton = carousel_indicator.querySelectorAll("button");
+  var total = document.getElementById('total')
+  total.innerHTML = "Total: "+ carousel_indicatorButton.length
+}
+function setCurrent(){
+    // Lấy phần tử carousel
+    var myCarousel = $('#carouselExampleIndicators');
+    // Lấy chỉ số của slide hiện tại
+    var activeSlideIndex = myCarousel.find('.carousel-item.active').index();
+    var current = document.getElementById('current')
+    current.innerHTML = 'Current: ' + (activeSlideIndex + 1) 
+}
+$(document).ready(function() {
+    // Lắng nghe sự kiện 'slide.bs.carousel'
+    $('#carouselExampleIndicators').on('slide.bs.carousel', function (e) {
+      var slideFrom = $(this).find('.active').index();
+      var slideTo = $(e.relatedTarget).index();
+      var current = document.getElementById('current')
+      current.innerHTML = 'Current: ' + (slideFrom + 1) 
+      console.log('Slide từ: ' + slideFrom + ' đến: ' + slideTo);
+      
+      // Thực hiện hành động cần thiết ở đây
+    });
+  });
