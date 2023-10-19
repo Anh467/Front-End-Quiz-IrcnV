@@ -275,8 +275,9 @@ var questionLoadMore =  [
 ];
 var GB_Total = 0
 var GB_current = 0
+var GB_Index = 0
 function getCarouselIndicatorsButton(i){
-  if(i == 0)
+  if(i == GB_Index)
     return `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${i}" class="active" aria-current="true" aria-label="Slide ${i+1}"></button>`;
   return `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${i}" aria-label="Slide ${i+1}"></button>`;
 }
@@ -295,12 +296,12 @@ function getAnswerP(pList, check){
 function getCarouselItemDiv(input, i){
   var pList= input.answer
   var question= input.question
-  return `<div class="carousel-item ${i == 0 ? "active" : ""} w-100 h-100 " style="background-color: black;">     
+  return `<div class="carousel-item ${i == GB_Index ? "active" : ""} w-100 h-100 " style="background-color: black;">     
           <div class="w-100 h-100 d-flex align-items-center justify-content-center flip-card">
             <div class="flip-card-inner ">
               <div class="flip-card-front w-100 h-100 d-flex align-items-center justify-content-center">
                 <div class="mx-auto " style="width: 90%; margin-bottom: 0;">
-                  <p style="color: azure; margin: 0px 0px 10px 0px;">${question}</p>
+                  <p style="color: azure; margin: 0px 0px 10px 0px;">${i + 1}. ${question}</p>
                   ${getAnswerP(pList, false)}
                 </div>
               </div>
